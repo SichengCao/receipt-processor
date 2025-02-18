@@ -26,21 +26,40 @@ public class ReceiptController {
 
     private int calculatePoints(Receipt receipt) {
         int points = 0;
-        points += (int) receipt.getRetailer().chars().filter(ch -> ALPHA_NUMERIC.matcher(String.valueOf((char) ch)).matches()).count();
+
+
+        points += (int) receipt.getRetailer().chars()
+                .filter(ch -> ALPHA_NUMERIC.matcher(String.valueOf((char) ch)).matches()).count();
+
+
         double total = Double.parseDouble(receipt.getTotal());
         if (total == (int) total) points += 50;
         if (total % 0.25 == 0) points += 25;
+
+
+        int itemCount = receipt.getItems().size();
+        points += (itemCount / 2) * 5;
+
         for (Item item : receipt.getItems()) {
-            if (item.getShortDescription().trim().length() % 2 == 0) {
-                points += Math.ceil(Double.parseDouble(item.getPrice()) * 0.2);
+            String description = item.getShortDescription().trim();
+            double price = Double.parseDouble(item.getPrice());
+
+            if (description.length() % 3 == 0) {
+                points += Math.ceil(price * 0.2);
             }
         }
+
+
         int day = Integer.parseInt(receipt.getPurchaseDate().split("-")[2]);
         if (day % 2 == 1) points += 6;
+
+
         int hour = Integer.parseInt(receipt.getPurchaseTime().split(":")[0]);
         if (hour >= 14 && hour < 16) points += 10;
+
         return points;
     }
+
 }
 
 class Receipt {

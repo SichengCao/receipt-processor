@@ -75,4 +75,12 @@ public class ReceiptControllerTest {
                 .andExpect(jsonPath("$.points").isNumber());
     }
 
+    @Test
+    void testGetPointsForInvalidReceipt() throws Exception {
+        mockMvc.perform(get("/receipts/nonexistent-id/points"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.error").value(0));
+    }
+
+
 }
