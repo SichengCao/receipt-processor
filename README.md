@@ -32,7 +32,7 @@ mvn spring-boot:run
 
 ## API Endpoints
 
-### **1 Process a Receipt**
+### **1. Process a Receipt**
 **Request:**
 ```sh
 curl -X POST http://localhost:8080/receipts/process \
@@ -52,14 +52,9 @@ curl -X POST http://localhost:8080/receipts/process \
      }'
 ```
 
-**Response Example:**
-```json
-{ "id": "abcd1234-ef56-7890-ghij-klmnopqrstuv" }
-```
-
 ---
 
-### **2 Get Receipt Points**
+### **2. Get Receipt Points**
 **Request:**
 ```sh
 curl -X GET http://localhost:8080/receipts/abcd1234-ef56-7890-ghij-klmnopqrstuv/points
@@ -73,12 +68,12 @@ curl -X GET http://localhost:8080/receipts/abcd1234-ef56-7890-ghij-klmnopqrstuv/
 ---
 
 ##  Run with Docker
-### **1Build Docker Image**
+### **1. Build Docker Image**
 ```sh
 docker build -t receipt-processor .
 ```
 
-### **2 Run Docker Container**
+### **2. Run Docker Container**
 ```sh
 docker run -p 8080:8080 receipt-processor
 ```
