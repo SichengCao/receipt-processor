@@ -59,7 +59,7 @@ curl -X POST http://localhost:8080/receipts/process \
 
 ---
 
-### **2️Get Receipt Points**
+### **2 Get Receipt Points**
 **Request:**
 ```sh
 curl -X GET http://localhost:8080/receipts/abcd1234-ef56-7890-ghij-klmnopqrstuv/points
@@ -73,12 +73,12 @@ curl -X GET http://localhost:8080/receipts/abcd1234-ef56-7890-ghij-klmnopqrstuv/
 ---
 
 ##  Run with Docker
-### **1️Build Docker Image**
+### **1Build Docker Image**
 ```sh
 docker build -t receipt-processor .
 ```
 
-### **2️ Run Docker Container**
+### **2 Run Docker Container**
 ```sh
 docker run -p 8080:8080 receipt-processor
 ```
